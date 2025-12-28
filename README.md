@@ -1,2 +1,2 @@
 # My-Leetcode-Journey
-Here's my leetocde jourey .
+Here's my leetcode jourey .
