@@ -22,6 +22,6 @@ class Solution {
             if(stack.isEmpty()||stack.pop()!=head.val) return false;
             head=head.next;
         }
-        return stack.isEmpty();
+        return true;
     }
 }
