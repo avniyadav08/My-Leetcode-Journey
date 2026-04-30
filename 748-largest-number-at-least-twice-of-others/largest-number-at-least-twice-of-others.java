@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 class Solution {
     public int dominantIndex(int[] nums) {
         int[] copy = nums.clone();
