@@ -17,10 +17,10 @@ class Solution {
                     int second = digits[j];
                     int third = digits[k];
 
-                    // leading zero not allowed
+                  
                     if(first == 0) continue;
 
-                    // last digit must be even
+                   
                     if(third % 2 != 0) continue;
 
                     int num = first * 100 + second * 10 + third;
