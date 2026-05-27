@@ -1,19 +1,32 @@
 class Solution {
     public int[] shortestToChar(String s, char c) {
-        int ans[]=new int[s.length()];
-        int idx=0;
-       
-        for(int i=0;i<s.length();i++){
-            int minDist=Integer.MAX_VALUE;
 
-            for(int j=0;j<s.length();j++){
-                if(s.charAt(j)==c){
-                    int dist=Math.abs(i-j);
-                    minDist=Math.min(minDist,dist);
-                }
+        int ans[] = new int[s.length()];
+
+        // LEFT TO RIGHT
+        int prev = -100000;
+
+        for (int i = 0; i < s.length(); i++) {
+
+           
+            if (s.charAt(i) == c) {
+                prev = i;
             }
 
-            ans[i]=minDist;
+            ans[i] = i - prev;
+        }
+
+        // RIGHT TO LEFT
+        prev = 100000;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+
+            if (s.charAt(i) == c) {
+                prev = i;
+            }
+
+           
+            ans[i] = Math.min(ans[i], prev - i);
         }
 
         return ans;
