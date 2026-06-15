@@ -1,24 +1,19 @@
 class Solution {
     public int longestPalindromeSubseq(String s) {
-        String reversed= new StringBuilder(s).reverse().toString();
-        return longestCommonSubsequence(s,reversed);
+        Integer dp[][]=new Integer[s.length()][s.length()];
+        return func(s,0,s.length()-1,dp);
     }
 
-    private int longestCommonSubsequence(String s1,String s2){
-        int n=s1.length();
-        int m=s2.length();
+    int func(String s,int i,int j,Integer dp[][]){
+        if(i>j) return 0;
+        if(i==j) return 1;
+        if(dp[i][j]!=null ) return dp[i][j];
 
-        int dp[][]=new int [n+1][m+1];
-
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<=m;j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1)){
-                    dp[i][j]=1+dp[i-1][j-1];
-                }else{
-                    dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
-                }
-            }
+        if(s.charAt(i)==s.charAt(j)){
+            return 2+ func(s,i+1,j-1,dp);
+        }else{
+            dp[i][j]= Math.max(func(s,i+1,j,dp),func(s,i,j-1,dp));
         }
-        return dp[n][m];
+        return dp[i][j];
     }
 }
