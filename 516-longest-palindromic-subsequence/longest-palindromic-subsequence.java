@@ -10,7 +10,7 @@ class Solution {
         if(dp[i][j]!=null ) return dp[i][j];
 
         if(s.charAt(i)==s.charAt(j)){
-            return 2+ func(s,i+1,j-1,dp);
+            dp[i][j]= 2+ func(s,i+1,j-1,dp);
         }else{
             dp[i][j]= Math.max(func(s,i+1,j,dp),func(s,i,j-1,dp));
         }
